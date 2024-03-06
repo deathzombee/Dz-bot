@@ -38,6 +38,7 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
+          eval $(ssh-agent)
           ssh-add ~/.ssh/id_rsa
           ssh -o StrictHostKeyChecking=no -vvv ${{ secrets.REMOTE_SERVER_USERNAME }}@${{ secrets.REMOTE_SERVER_ADDRESS }} << 'ENDSSH'
             # if github repo is not cloned on remote server then clone it
