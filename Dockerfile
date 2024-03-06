@@ -23,6 +23,6 @@ RUN apk --no-cache add ca-certificates
 WORKDIR /root/
 
 
-COPY --from=builder /app/discordbot .
+COPY --from=builder /app/dz-bot .
 
 CMD ["sh", "-c", "./dz-bot -t $TOKEN"]

@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  dz-bot:
+    build: .
+    environment:
+      - TOKEN=${TOKEN}
+    # Uncomment the line below t to rebuild on run
+    #build: .
