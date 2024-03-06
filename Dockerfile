@@ -1,27 +1,28 @@
 # Start from the official Golang base image
 FROM golang:alpine as builder
 
-# Set the Current Working Directory inside the container
+# Container workdir
 WORKDIR /app
 
 COPY go.mod go.sum ./
 
+# Dependencies
 RUN go mod download
 
-# Copy the source from the current directory to the Working Directory inside the container
+# Copy from current dir to workdir in container
 COPY . .
 
-# Build
-RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o discordbot .
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o dz-bot .
+
 
 # Start a new stage from scratch
-FROM alpine:latest  
+FROM alpine:latest
 
 RUN apk --no-cache add ca-certificates
 
 WORKDIR /root/
 
-# Copy the binary file from the previous stage
+
 COPY --from=builder /app/discordbot .
 
-CMD ["./discordbot"]
+CMD ["sh", "-c", "./dz-bot -t $TOKEN"]
