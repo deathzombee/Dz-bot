@@ -35,7 +35,7 @@ jobs:
     steps:
       - name: Load Docker image on remote server
         run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.REMOTE_SERVER_USERNAME }}@${{ secrets.REMOTE_SERVER_ADDRESS }} << 'ENDSSH'
+          ssh -o StrictHostKeyChecking=no ${{ secrets.REMOTE_SERVER_USERNAME }}@${{ secrets.REMOTE_SERVER_ADDRESS }} << 'END SSH'
             # if github repo is not cloned on remote server then clone it
           if [ ! -d "/home/${{ secrets.REMOTE_SERVER_USERNAME }}/dz-bot" ]; then
               git clone git@github.com:deathzombee/Dz-bot.git /home/${{ secrets.REMOTE_SERVER_USERNAME }}/dz-bot
