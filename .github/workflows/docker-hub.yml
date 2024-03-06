@@ -38,7 +38,7 @@ jobs:
           ssh -o StrictHostKeyChecking=no ${{ secrets.REMOTE_SERVER_USERNAME }}@${{ secrets.REMOTE_SERVER_ADDRESS }} << 'ENDSSH'
             # if github repo is not cloned on remote server then clone it
             if [ ! -d "/home/${{ secrets.REMOTE_SERVER_USERNAME }}/dz-bot" ]; then
-              git clone git@github.com:deathzombee/Dz-bot.git /home/${{ secrets.REMOTE_SERVER_USERNAME }}/dz-bot
+              git clone https://github.com/deathzombee/Dz-bot.git /home/${{ secrets.REMOTE_SERVER_USERNAME }}/dz-bot
               cd /home/${{ secrets.REMOTE_SERVER_USERNAME }}/dz-bot
             else
               cd /home/${{ secrets.REMOTE_SERVER_USERNAME }}/dz-bot
