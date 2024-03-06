@@ -8,7 +8,7 @@ on:
 jobs:
   docker:
     runs-on: ubuntu-latest
-    environment: production
+    environment: deploy-latest
     steps:
       -
         name: Set up QEMU
